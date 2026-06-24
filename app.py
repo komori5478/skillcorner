@@ -221,27 +221,27 @@ def fetch_dynamic(client, season_key, prog=None):
 # ============================================================
 #  DATAFRAME HELPERS
 # ============================================================
-@st.cache_data(ttl=300)
+@st.cache_data(ttl=86400)
 def df_runs(season_key):
     d = _load(season_key, "runs")
     return pd.DataFrame(d) if d else pd.DataFrame()
 
-@st.cache_data(ttl=300)
+@st.cache_data(ttl=86400)
 def df_passes(season_key):
     d = _load(season_key, "passes")
     return pd.DataFrame(d) if d else pd.DataFrame()
 
-@st.cache_data(ttl=300)
+@st.cache_data(ttl=86400)
 def df_pressures(season_key):
     d = _load(season_key, "pressures")
     return pd.DataFrame(d) if d else pd.DataFrame()
 
-@st.cache_data(ttl=300)
+@st.cache_data(ttl=86400)
 def df_physical(season_key):
     d = _load(season_key, "physical")
     return pd.DataFrame(d) if d else pd.DataFrame()
 
-@st.cache_data(ttl=300)
+@st.cache_data(ttl=86400)
 def df_obr(season_key):
     d = _load(season_key, "obr")
     if not d: return pd.DataFrame()
@@ -250,7 +250,7 @@ def df_obr(season_key):
         if c in df.columns: df[c] = pd.to_numeric(df[c], errors="coerce")
     return df
 
-@st.cache_data(ttl=300)
+@st.cache_data(ttl=86400)
 def df_pp(season_key):
     d = _load(season_key, "pp")
     if not d: return pd.DataFrame()
